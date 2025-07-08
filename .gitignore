@@ -7,19 +7,34 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-.gitignore
+# Dependency directories
+node_modules/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Vite build output
+dist/
+dist-ssr/
+*.local
+
+# Firebase (optional, only if you're using CLI config that shouldn't be tracked)
+.firebase/
+
+# Environment variables
+.env
+.env.*.local
+
+# OS-specific files
 .DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/
+!.vscode/extensions.json
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Mac folder attributes
+__MACOSX/
