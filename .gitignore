@@ -16,7 +16,7 @@ dist-ssr/
 *.local
 
 # Firebase (optional, only if you're using CLI config that shouldn't be tracked)
-.firebase/
+.firebase.js/
 
 # Environment variables
 .env
@@ -38,3 +38,7 @@ Thumbs.db
 
 # Mac folder attributes
 __MACOSX/
+
+
+# Firebase config file
+src/utils/firebase.js

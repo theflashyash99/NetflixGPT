@@ -7,7 +7,7 @@ export const checkValidData = (email, password, name) => {
   if (!isPasswordValid) return "Password is not valid";
 
   // Only check name if it's provided (i.e. during sign up)
-  if (name !== null && name.trim() === "") return "Name is required";
+  if (name !== null && name.trim() === "") return "Name is required"; 
 
   return null;
 };

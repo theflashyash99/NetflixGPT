@@ -1,21 +1,25 @@
 import { checkValidData } from "../utils/validate";
 import Header from "./Header";
 import { useRef, useState } from "react";
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignIn, setSignIn] = useState(true);
   // default value is true.
   // this is being used to change the Sign in to Sign Up when it's click on the sign up now in the paragraph below..
 
-  // const navigate = useNavigate();
-
   const [errorMessage, setErrorMessage] = useState(null);
 
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+ 
+  const navigate = useNavigate(); 
 
   const toggleSignInForm = () => {
     setSignIn(!isSignIn);
@@ -55,7 +59,10 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse")
+          
         })
+
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -63,32 +70,37 @@ const Login = () => {
         });
     } else {
       //SignIn Logic
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log(user)
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setErrorMessage(errorCode + "-" + errorMessage)
-  });
-
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
     }
   };
   return (
-    <div className="flex">
+    <div className="">
       <Header />
-      <div className="absolute">
+      <div className="absolute inset-0">
         <img
+        className="w-full h-full object-cover"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/05e91faa-6f6d-4325-934e-5418dcc2567b/web/IN-en-20250630-TRIFECTA-perspective_159086b1-425f-435b-bcd5-1ed8039cdef9_large.jpg"
           alt="back-ground"
         />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className=" absolute  p-12 bg-black  border-white  w-3/12 my-36 mx-auto right-0 left-0 text-white rounded-xl opacity-85 "
+        className=" absolute  w-11/12 sm:w-9/12 md:w-7/12 lg:w-4/12 xl:w-3/12 p-12 bg-black  border-white  my-36 mx-auto right-0 left-0 text-white rounded-xl opacity-85 "
       >
         <h1 className="font-bold text-3xl py-6">
           {isSignIn ? "Sign In" : "Sign Up"}

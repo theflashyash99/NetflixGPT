@@ -14,7 +14,10 @@
 - Form Validation 
 - Redirects to **Browse** page after login
 - useRef
-
+- FireBase Setup
+- create SignUp user account
+- Implement sign in user API
+- Create Redux Store with user Slice
 ---
 
 ### 📺 Browse Page
@@ -37,18 +40,6 @@
 ---
 
 
-iphone pro 15 display big 120hz
-iphone pro 15 3 camera
-resale value more
-titanium body
-usb 3.2
-extra zoom but same camera quality without zoom
-
-
-
-iphone 13 battery more.
-more strong display protection
-usb 2.0
 
 
 
