@@ -4,9 +4,12 @@ import { useRef, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignIn, setSignIn] = useState(true);
@@ -15,11 +18,13 @@ const Login = () => {
 
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const dispatch = useDispatch();
+
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
- 
-  const navigate = useNavigate(); 
+
+  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setSignIn(!isSignIn);
@@ -58,9 +63,30 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          //update user profile API
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/100846396?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              // we have used the auth.current to get data from the Store as the user here has no new data the updated data is not present here that's why we use the auth.currentUser
+              dispatch(
+              // we extract the uid ,  email ,displayName from user object. 
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
           console.log(user);
-          navigate("/browse")
-          
         })
 
         .catch((error) => {
@@ -79,7 +105,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse")
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -93,7 +119,7 @@ const Login = () => {
       <Header />
       <div className="absolute inset-0">
         <img
-        className="w-full h-full object-cover"
+          className="w-full h-full object-cover"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/05e91faa-6f6d-4325-934e-5418dcc2567b/web/IN-en-20250630-TRIFECTA-perspective_159086b1-425f-435b-bcd5-1ed8039cdef9_large.jpg"
           alt="back-ground"
         />

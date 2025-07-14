@@ -1,17 +1,20 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
   const handleSignOut = () => {
-    signOut(auth).then(() => {
+    signOut(auth)
+      .then(() => {
         // Sign-out successful.
         navigate("/");
       })
       .catch((error) => {
         // An error happened.
-        console.log(error)
+        console.log(error);
       });
   };
   return (
@@ -23,16 +26,22 @@ const Header = () => {
           alt="logo"
         />
 
-        <div className="flex ">
-          <img
-            className="p-2"
-            alt="user-icon"
-            src="https://occ-0-6245-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png?r=e6e"
-          />
-          <button onClick={handleSignOut} className="p-2 font-bold text-white ">
-            (Sign Out)
-          </button>
-        </div>
+        {/*this is know as the Short circuit rendering */}
+        {user && (
+          <div className="flex ">
+            <img
+              className="p-2 w-18 rounded-full"
+              alt="user-icon"
+              src={user?.photoURL}
+            />
+            <button
+              onClick={handleSignOut}
+              className="p-2 font-bold text-white "
+            >
+              (Sign Out)
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

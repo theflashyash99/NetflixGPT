@@ -1,4 +1,4 @@
-import { createBrowserRouter  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Browse from "./Browse";
 import Login from "./Login";
 import { RouterProvider } from "react-router-dom";
@@ -10,7 +10,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 
 const Body = () => {
   const dispatch = useDispatch();
- 
+
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -25,16 +25,19 @@ const Body = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const { uid, email, displayName } = user;
+        const { uid, email, displayName, photoURL } = user;
         // we extract the uid ,  email ,displayName from user object
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-
-       
-        
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
       } else {
         // User is signed out
         dispatch(removeUser());
-        
       }
     });
   }, []);
