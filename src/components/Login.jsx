@@ -7,7 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -24,7 +24,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
 
-  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setSignIn(!isSignIn);
@@ -81,14 +80,14 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+              
             })
             .catch((error) => {
               setErrorMessage(error.message);
             });
           console.log(user);
         })
-
+       // navigate from here has been removed as it has been set from the onAuthChange() as an centralised place. btw this is made for the direct navigate to browse after the sign up of user which will re-direct user on the browse. syntax = navigate("/browse")
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -105,7 +104,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
+         
         })
         .catch((error) => {
           const errorCode = error.code;
