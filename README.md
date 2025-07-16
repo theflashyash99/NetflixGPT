@@ -22,6 +22,8 @@ A fully functional Netflix-inspired web application built using **React** and **
   - **Others**
   - BugFix : Sign up user displayName and profile update
   - BugFix : if the user is not logged in redirect to login else logged in then make user to be on browse
+  - unsubscribe to the onAuthStateChanged callback
+  - added hardcoded value to constants file/utils.
 
 ---
 
@@ -51,7 +53,7 @@ A fully functional Netflix-inspired web application built using **React** and **
 - 🎨 Tailwind CSS
 - 🔥 Firebase Authentication & Hosting
 - 🗃️ Redux Toolkit
-- 🤖 AI integration for search
+- 🤖 AI integration for searching about movies
 
 ---
 

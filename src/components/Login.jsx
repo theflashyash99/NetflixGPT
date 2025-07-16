@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import {  USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setSignIn] = useState(true);
@@ -23,7 +24,6 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-
 
   const toggleSignInForm = () => {
     setSignIn(!isSignIn);
@@ -65,14 +65,15 @@ const Login = () => {
           //update user profile API
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/100846396?v=4",
+            photoURL: USER_AVATAR,
+            //USER_AVATAR link to used here
           })
             .then(() => {
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
               // we have used the auth.current to get data from the Store as the user here has no new data the updated data is not present here that's why we use the auth.currentUser
               dispatch(
-              // we extract the uid ,  email ,displayName from user object. 
+                // we extract the uid ,  email ,displayName from user object.
                 addUser({
                   uid: uid,
                   email: email,
@@ -80,14 +81,13 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              
             })
             .catch((error) => {
               setErrorMessage(error.message);
             });
           console.log(user);
         })
-       // navigate from here has been removed as it has been set from the onAuthChange() as an centralised place. btw this is made for the direct navigate to browse after the sign up of user which will re-direct user on the browse. syntax = navigate("/browse")
+        // navigate from here has been removed as it has been set from the onAuthChange() as an centralised place. btw this is made for the direct navigate to browse after the sign up of user which will re-direct user on the browse. syntax = navigate("/browse")
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -104,7 +104,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-         
         })
         .catch((error) => {
           const errorCode = error.code;
