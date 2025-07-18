@@ -35,8 +35,7 @@ const Login = () => {
     const nameValue = isSignIn ? null : name.current?.value;
     checkValidData(email, password, name);
 
-    console.log(email.current.value);
-    console.log(password.current.value);
+    
     // this let you get the data of input by the help pf ref.\
 
     const message = checkValidData(
@@ -85,7 +84,7 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user);
+         
         })
         // navigate from here has been removed as it has been set from the onAuthChange() as an centralised place. btw this is made for the direct navigate to browse after the sign up of user which will re-direct user on the browse. syntax = navigate("/browse")
         .catch((error) => {
@@ -103,7 +102,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          
         })
         .catch((error) => {
           const errorCode = error.code;

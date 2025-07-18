@@ -18,12 +18,19 @@ A fully functional Netflix-inspired web application built using **React** and **
   - **Sign Out** functionality
   - **Update Profile**
 - 📦 **Redux Store**
+
   - `userSlice` for managing user state
-  - **Others**
+
+  - ## Others
   - BugFix : Sign up user displayName and profile update
   - BugFix : if the user is not logged in redirect to login else logged in then make user to be on browse
   - unsubscribe to the onAuthStateChanged callback
   - added hardcoded value to constants file/utils.
+  - Register TMDB API & Create an app & get access to token
+  - Get data from TMDB now playing movies list API.
+  - Added movies data to the store (movieslice)
+  - update store with movies data
+  - Planning for main container
 
 ---
 
@@ -57,5 +64,4 @@ A fully functional Netflix-inspired web application built using **React** and **
 
 ---
 
-## 📁 Folder Structure (Optional Add-on)
 

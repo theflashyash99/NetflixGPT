@@ -21,7 +21,7 @@ const Header = () => {
       })
       .catch((error) => {
         // An error happened.
-        console.log(error);
+        
       });
   };
   // moved from the Body to Header so that Router work.
