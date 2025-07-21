@@ -30,7 +30,18 @@ A fully functional Netflix-inspired web application built using **React** and **
   - Get data from TMDB now playing movies list API.
   - Added movies data to the store (movieslice)
   - update store with movies data
-  - Planning for main container
+  - Planning for main container and secondary container
+  - fetch data for trailer video
+  - update the store with video data.
+  - embedded the YouTube Video and make it autoplay and mute it.
+  - tailwind classes to make Main Container looks awesome.
+  - Build Secondary components
+  - Build Movie List
+  - Build Movies Card
+  - TMDB Image CDN URL
+  - Made the Browse page amazing with tailwind CSS.
+  - UsepopularMovies, UseTopRatedMovies , UseUpcomingMovies custom hook
+
 
 ---
 
