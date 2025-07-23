@@ -10,7 +10,7 @@ import { auth } from "../utils/firebase";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import {  USER_AVATAR } from "../utils/constants";
+import {  BG_IMG_URL, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setSignIn] = useState(true);
@@ -117,7 +117,7 @@ const Login = () => {
       <div className="absolute inset-0">
         <img
           className="w-full h-full object-cover"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/05e91faa-6f6d-4325-934e-5418dcc2567b/web/IN-en-20250630-TRIFECTA-perspective_159086b1-425f-435b-bcd5-1ed8039cdef9_large.jpg"
+          src={BG_IMG_URL} 
           alt="back-ground"
         />
       </div>
