@@ -41,7 +41,8 @@ A fully functional Netflix-inspired web application built using **React** and **
   - TMDB Image CDN URL
   - Made the Browse page amazing with tailwind CSS.
   - UsepopularMovies, UseTopRatedMovies , UseUpcomingMovies custom hook
-  - GPT Search Feature
+  - GPT Search Feature.
+  - (BONUS) Multi-Language Feature in our app
 
 
 ---
