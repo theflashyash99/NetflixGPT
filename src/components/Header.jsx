@@ -13,7 +13,7 @@ const Header = () => {
 
   const user = useSelector((store) => store.user);
   //! for the short-circuit method show language selector only when it's on the GPT page.
-   const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const dispatch = useDispatch();
 
@@ -38,7 +38,6 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
 
- 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -72,26 +71,28 @@ const Header = () => {
         {/*this is know as the Short circuit rendering */}
         {user && (
           <div className="flex p-2 ">
-           { showGptSearch && <select
-              className="bg-gray-900 text-white m-3 p-1 opacity-75 rounded-lg"
-              onChange={handleLanguageChange}
-            >
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier}>
-                  {lang.name}{" "}
-                </option>
-              ))}
-              {/* above made the same with the Map function
+            {showGptSearch && (
+              <select
+                className="bg-gray-900 text-white m-3 p-1 opacity-75 rounded-lg"
+                onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}{" "}
+                  </option>
+                ))}
+                {/* above made the same with the Map function
                <option value="en">English</option>
               <option value="hindi">Hindi</option> 
               <option value="spanish">Spanish</option>
               <option value="japanese">Japanese</option> */}
-            </select>}
+              </select>
+            )}
             <button
               className="py-2 px-4  m-2 bg-purple-800  text-white rounded-xl"
               onClick={handleGptSearchClick}
             >
-              GPT Search
+              { showGptSearch ? "Homepage" : "GPT Search" }
             </button>
             <img className="p-2 w-16 " alt="user-icon" src={user?.photoURL} />
             <button
@@ -101,7 +102,7 @@ const Header = () => {
               (Sign Out)
             </button>
           </div>
-        )}
+        )} 
       </div>
     </>
   );
