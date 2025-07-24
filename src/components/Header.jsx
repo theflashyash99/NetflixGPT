@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/GptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
   // moved from the Body to Header so that Router work.
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -62,12 +67,21 @@ const Header = () => {
 
         {/*this is know as the Short circuit rendering */}
         {user && (
-          <div className="flex ">
-            <select>
-              <option value="en">English</option>
-              <option value="hindi">Hindi</option>
+          <div className="flex p-2 ">
+            <select
+              className="bg-gray-900 text-white m-3 p-1 opacity-75 rounded-lg"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}{" "}
+                </option>
+              ))}
+              {/* above made the same with the Map function
+               <option value="en">English</option>
+              <option value="hindi">Hindi</option> 
               <option value="spanish">Spanish</option>
-              <option value="japanese">Japanese</option>
+              <option value="japanese">Japanese</option> */}
             </select>
             <button
               className="py-2 px-4  m-2 bg-purple-800  text-white rounded-xl"

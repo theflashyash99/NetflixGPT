@@ -13,7 +13,14 @@ export const API_OPTIONS = {
   },
 };
 
-export const IMG_CDN_URL = "https://image.tmdb.org/t/p/original"
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/original";
 
-export  const BG_IMG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/05e91faa-6f6d-4325-934e-5418dcc2567b/web/IN-en-20250630-TRIFECTA-perspective_159086b1-425f-435b-bcd5-1ed8039cdef9_large.jpg"
-        
+export const BG_IMG_URL =
+  "https://assets.nflxext.com/ffe/siteui/vlv3/05e91faa-6f6d-4325-934e-5418dcc2567b/web/IN-en-20250630-TRIFECTA-perspective_159086b1-425f-435b-bcd5-1ed8039cdef9_large.jpg";
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "english", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+  { identifier: "japanese", name: "Japanese" },
+];

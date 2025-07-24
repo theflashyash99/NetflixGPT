@@ -1,5 +1,5 @@
 export const lang = {
-  eng: {
+  english: {
     search: "Search",
     gptSearchPlaceholder: "What would you like to watch today?"
   },
