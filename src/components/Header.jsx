@@ -12,6 +12,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const user = useSelector((store) => store.user);
+  //! for the short-circuit method show language selector only when it's on the GPT page.
+   const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
 
   const dispatch = useDispatch();
 
@@ -35,6 +37,8 @@ const Header = () => {
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
+
+ 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -68,7 +72,7 @@ const Header = () => {
         {/*this is know as the Short circuit rendering */}
         {user && (
           <div className="flex p-2 ">
-            <select
+           { showGptSearch && <select
               className="bg-gray-900 text-white m-3 p-1 opacity-75 rounded-lg"
               onChange={handleLanguageChange}
             >
@@ -82,7 +86,7 @@ const Header = () => {
               <option value="hindi">Hindi</option> 
               <option value="spanish">Spanish</option>
               <option value="japanese">Japanese</option> */}
-            </select>
+            </select>}
             <button
               className="py-2 px-4  m-2 bg-purple-800  text-white rounded-xl"
               onClick={handleGptSearchClick}
