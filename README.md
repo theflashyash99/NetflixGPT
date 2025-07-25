@@ -43,6 +43,7 @@ A fully functional Netflix-inspired web application built using **React** and **
   - UsepopularMovies, UseTopRatedMovies , UseUpcomingMovies custom hook
   - GPT Search Feature.
   - (BONUS) Multi-Language Feature in our app
+  -ChartGPT integration Day 1 - knowing the basics
 
 
 ---
