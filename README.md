@@ -36,7 +36,9 @@ A fully functional Netflix-inspired web application built using **React** and **
   - embedded the YouTube Video and make it autoplay and mute it.
   - tailwind classes to make Main Container looks awesome.
   - Build Secondary components
-
+  - Build Movie List
+  - Build Movies Card
+  - TMDB Image CDN URL
   - Made the Browse page amazing with tailwind CSS.
   - UsepopularMovies, UseTopRatedMovies , UseUpcomingMovies custom hook
   - GPT Search Feature.
