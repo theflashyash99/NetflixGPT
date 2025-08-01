@@ -5,15 +5,17 @@ import {  BG_IMG_URL } from '../utils/constants'
 
 const GptSearch = () => {
   return (
-    <div>
-      <div className="absolute inset-0 -z-10">
+    <div >
+      <div className="fixed inset-0 -z-10">
         <img
           className="w-full h-full object-cover"
           src={BG_IMG_URL}
         />
       </div>
+      <div className=''> 
     <GptSearchBar/>
     <GptMovieSuggestion/>
+    </div>
 
 
 
@@ -22,3 +24,4 @@ const GptSearch = () => {
 }
 
 export default GptSearch
+//now
