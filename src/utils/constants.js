@@ -24,3 +24,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
   { identifier: "japanese", name: "Japanese" },
 ];
+
+export const OPENAI_GPT = `${import.meta.env.VITE_OPENAI_GPT}` 
