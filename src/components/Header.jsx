@@ -64,16 +64,16 @@ const Header = () => {
   }, []);
 
   return (
-    <>
-      <div className="absolute px-8 py-2   bg-gradient-to-b from-black z-10 w-full flex justify-between items-center">
-        <img className="w-44" src={LOGO} alt="logo" />
+    
+      <div className=" absolute px-8 py-2   bg-gradient-to-b from-black z-10 w-full flex flex-col md:flex-row md:justify-between items-center  ">
+        <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
 
         {/*this is know as the Short circuit rendering */}
         {user && (
-          <div className="flex p-2 ">
+          <div className="flex justify-between p-2 -mx-9">
             {showGptSearch && (
               <select
-                className="bg-gray-900 text-white m-3 p-1 opacity-75 rounded-lg"
+                className="bg-gray-900 text-white  m-3 p-1 opacity-75 rounded-lg"
                 onChange={handleLanguageChange}
               >
                 {SUPPORTED_LANGUAGES.map((lang) => (
@@ -94,7 +94,7 @@ const Header = () => {
             >
               { showGptSearch ? "Homepage" : "GPT Search" }
             </button>
-            <img className="p-2 w-16 " alt="user-icon" src={user?.photoURL} />
+            <img className="hidden md:inline-block p-4 w-16 " alt="user-icon" src={user?.photoURL} />
             <button
               onClick={handleSignOut}
               className="p-2 font-bold text-white "
@@ -104,8 +104,9 @@ const Header = () => {
           </div>
         )} 
       </div>
-    </>
+    
   );
 };
 
 export default Header;
+//now
